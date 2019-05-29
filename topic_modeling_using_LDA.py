@@ -1,3 +1,6 @@
+
+from nltk.corpus import stopwords
+stopwords = stopwords.words('english')
 """
 Author : Swapnil Gaikwad
 Title : to get the topics from the documents using Latent Dirichlet Allocation
@@ -10,7 +13,8 @@ doc3 = "doctors suggest that driving may cause increased stress and blood pressu
 
 doc_complete = [doc1,doc2,doc3]
 
-doc_clean = [doc.split() for doc in doc_complete]
+doc_clean = [[word for word in doc.split() if word not in stopwords] for doc in doc_complete]
+
 print("\n doc_clean => ",doc_clean)
 
 import gensim 
